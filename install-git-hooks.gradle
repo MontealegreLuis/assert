@@ -1,0 +1,12 @@
+task installGitMessageHook(type: Copy) {
+  from new File(rootProject.rootDir, '.templates/commit-msg')
+  into new File(rootProject.rootDir, '.git/hooks')
+}
+
+task installGitPreCommitHook(type: Copy) {
+  from new File(rootProject.rootDir, '.templates/pre-commit')
+  into new File(rootProject.rootDir, '.git/hooks')
+}
+
+installGitPreCommitHook.dependsOn installGitMessageHook
+clean.dependsOn installGitPreCommitHook
