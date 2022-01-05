@@ -8,15 +8,39 @@ The main goal of Assert is to minimize the code to implement assertions. When as
 
 All assertions in the `Assert` class throw an `IllegalArgumentException` if they fail.
 
+## Installation
+
+### Maven
+
+Add the following entry to your `pom.xml` file
+
+```xml
+<dependencies>
+    <dependency>
+      <groupId>com.montealegreluis</groupId>
+      <artifactId>assert</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
+### Gradle
+
+```groovy
+dependencies {
+  implementation 'com.montealegreluis:assert'
+}
+```
+
 ## Examples
 
 ```java
-public final class Filename {
-  private String filename;
+public final class Username {
+  private String username;
     
-  public Filename(String filename) {
-    Assert.notBlank(filename);
-    this.filename = filename;
+  public Username(String username) {
+    Assert.notBlank(username);
+    this.username = username;
   }
 }
 ```
@@ -26,12 +50,12 @@ public final class Filename {
 You can pass a custom exception message, as shown in the snippet below.
 
 ```java
-public final class Filename {
-  private String filename;
+public final class Username {
+  private String username;
     
-  public Filename(String filename) {
-    Assert.notBlank(filename, "Filename cannot be empty or null. '%s' given");
-    this.filename = filename;
+  public Username(String username) {
+    Assert.notBlank(username, "Username cannot be empty or null. '%s' given");
+    this.username = username;
   }
 }
 ```
