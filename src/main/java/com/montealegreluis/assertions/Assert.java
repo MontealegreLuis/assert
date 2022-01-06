@@ -1,10 +1,19 @@
 package com.montealegreluis.assertions;
 
+import java.util.Collection;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Assert {
+  public static void notEmpty(Collection<?> collection) {
+    notEmpty(collection, "Collection cannot be empty");
+  }
+
+  public static void notEmpty(Collection<?> collection, String message) {
+    if (collection.isEmpty()) reportIllegalArgument(message);
+  }
+
   public static void notBlank(String value) {
     notBlank(value, String.format("Expected a not blank value. '%s' given.", value));
   }

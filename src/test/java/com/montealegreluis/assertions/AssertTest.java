@@ -2,6 +2,8 @@ package com.montealegreluis.assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 final class AssertTest {
@@ -41,5 +43,31 @@ final class AssertTest {
             IllegalArgumentException.class, () -> Assert.notBlank(null, customErrorMessage));
 
     assertEquals("Value cannot be null or empty. 'null' was provided", exception.getMessage());
+  }
+
+  @Test
+  void not_empty_assertion_accepts_non_empty_collections() {
+    assertDoesNotThrow(() -> Assert.notEmpty(List.of("element")));
+  }
+
+  @Test
+  void not_empty_assertion_prevents_empty_collections() {
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class, () -> Assert.notEmpty(Collections.emptyList()));
+
+    assertEquals("Collection cannot be empty", exception.getMessage());
+  }
+
+  @Test
+  void not_empty_assertion_reports_custom_message_on_empty_collections() {
+    var customErrorMessage = "Shopping cart cannot be empty";
+
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> Assert.notEmpty(Collections.emptyList(), customErrorMessage));
+
+    assertEquals(customErrorMessage, exception.getMessage());
   }
 }
