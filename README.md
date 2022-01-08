@@ -4,33 +4,15 @@
 
 Assert is a Maven package with assertions (guard clauses) for input validation. Assert can be used to implement pre-/post-conditions on input data.
 
-The main goal of Assert is to minimize the code to implement assertions. When assertions fail, an exception is thrown, removing the necessity for if-clauses in your code.
+When assertions fail, an exception is thrown, removing the necessity for if-clauses in your code.
 
 All assertions in the `Assert` class throw an `IllegalArgumentException` if they fail.
 
 ## Installation
 
-### Maven
-
-Add the following entry to your `pom.xml` file
-
-```xml
-<dependencies>
-    <dependency>
-      <groupId>com.montealegreluis</groupId>
-      <artifactId>assert</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-</dependencies>
-```
-
-### Gradle
-
-```groovy
-dependencies {
-  implementation 'com.montealegreluis:assert'
-}
-```
+1. [Authenticating to GitHub Packages](https://github.com/MontealegreLuis/assert/blob/main/installation.md#authenticating-to-github-packages)
+2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/installation.md#maven)
+3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/installation.md#gradle)
 
 ## Examples
 
@@ -54,10 +36,18 @@ public final class Username {
   private String username;
     
   public Username(String username) {
-    Assert.notBlank(username, "Username cannot be empty or null. '%s' given");
+    Assert.notBlank(username, "Username cannot be blank or null. '%s' given");
     this.username = username;
   }
 }
 ```
 
-The default error message would be `Expected a not blank value. '%s' given.`
+The default error message would be `Value cannot be blank or null. '%s' given.`
+
+## Contribute
+
+Please refer to [CONTRIBUTING](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to phUML.
+
+## License
+
+Released under the [BSD-3-Clause](https://github.com/MontealegreLuis/assert/blob/main/LICENSE).
