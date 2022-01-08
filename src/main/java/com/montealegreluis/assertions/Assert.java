@@ -15,7 +15,7 @@ public final class Assert {
   }
 
   public static void notBlank(String value) {
-    notBlank(value, String.format("Expected a not blank value. '%s' given.", value));
+    notBlank(value, String.format("Value cannot be blank or null. '%s' given.", value));
   }
 
   public static void notBlank(String value, String message) {

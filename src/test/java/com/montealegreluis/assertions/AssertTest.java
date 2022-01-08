@@ -17,21 +17,21 @@ final class AssertTest {
   void not_blank_assertion_prevents_null_values() {
     var exception = assertThrows(IllegalArgumentException.class, () -> Assert.notBlank(null));
 
-    assertEquals("Expected a not blank value. 'null' given.", exception.getMessage());
+    assertEquals("Value cannot be blank or null. 'null' given.", exception.getMessage());
   }
 
   @Test
   void not_blank_assertion_prevents_empty_values() {
     var exception = assertThrows(IllegalArgumentException.class, () -> Assert.notBlank(""));
 
-    assertEquals("Expected a not blank value. '' given.", exception.getMessage());
+    assertEquals("Value cannot be blank or null. '' given.", exception.getMessage());
   }
 
   @Test
   void not_blank_assertion_prevents_blank_values() {
     var exception = assertThrows(IllegalArgumentException.class, () -> Assert.notBlank(" "));
 
-    assertEquals("Expected a not blank value. ' ' given.", exception.getMessage());
+    assertEquals("Value cannot be blank or null. ' ' given.", exception.getMessage());
   }
 
   @Test
