@@ -62,14 +62,12 @@ Add the following entry to your `dependencies` in your project's `pom.xml` file.
 
 ### Gradle
 
-Create a `gradle.properties` file with the following content.
+Create or update your `~/.gradle/gradle.properties` file with the following content.
 
 ```groovy
 gpr.user=YOUR_USERNAME
 gpr.token=YOUR_TOKEN
 ```
-
-Add `gradle.properties` to your `.gitignore` to prevent accidentally leaking your access token.
 
 Alternatively, you can set environment variables `USERNAME` and `TOKEN`.
 
