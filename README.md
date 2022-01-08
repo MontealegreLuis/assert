@@ -1,6 +1,8 @@
 # Assert
 
 [![CI workflow](https://github.com/montealegreluis/assert/actions/workflows/ci.yml/badge.svg)](https://github.com/montealegreluis/assert/actions/workflows/ci.yml)
+[![Release workflow](https://github.com/montealegreluis/assert/actions/workflows/release.yml/badge.svg)](https://github.com/montealegreluis/assert/actions/workflows/release.yml)
+[![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Assert is a Maven package with assertions (guard clauses) for input validation. Assert can be used to implement pre-/post-conditions on input data.
 
