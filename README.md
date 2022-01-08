@@ -10,9 +10,9 @@ All assertions in the `Assert` class throw an `IllegalArgumentException` if they
 
 ## Installation
 
-1. [Authenticating to GitHub Packages](https://github.com/MontealegreLuis/assert/blob/main/installation.md#authenticating-to-github-packages)
-2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/installation.md#maven)
-3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/installation.md#gradle)
+1. [Authenticating to GitHub Packages](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#authenticating-to-github-packages)
+2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#maven)
+3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#gradle)
 
 ## Examples
 
