@@ -9,7 +9,7 @@ plugins {
 group 'com.montealegreluis'
 version '1.1-SNAPSHOT'
 
-apply from: rootProject.file('install-git-hooks.gradle')
+apply from: rootProject.file('hooks.gradle')
 
 repositories {
     mavenCentral()
