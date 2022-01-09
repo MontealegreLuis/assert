@@ -8,6 +8,30 @@ import org.junit.jupiter.api.Test;
 
 final class AssertTest {
   @Test
+  void not_null_assertion_allows_only_non_null_values() {
+    assertDoesNotThrow(() -> Assert.notNull(true));
+  }
+
+  @Test
+  void not_null_assertion_prevents_null_values() {
+    var exception = assertThrows(IllegalArgumentException.class, () -> Assert.notNull(null));
+
+    assertEquals("Value cannot be null", exception.getMessage());
+  }
+
+  @Test
+  void not_null_assertion_reports_custom_message_on_null_values() {
+    var customErrorMessage = "Username cannot be null";
+    String username = null;
+
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class, () -> Assert.notNull(username, customErrorMessage));
+
+    assertEquals("Username cannot be null", exception.getMessage());
+  }
+
+  @Test
   void is_true_assertion_allows_only_true_values() {
     assertDoesNotThrow(() -> Assert.isTrue(true));
   }

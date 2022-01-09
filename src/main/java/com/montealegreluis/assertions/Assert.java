@@ -6,6 +6,14 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Assert {
+  public static void notNull(Object value) {
+    notNull(value, "Value cannot be null");
+  }
+
+  public static void notNull(Object value, String message) {
+    if (value == null) reportIllegalArgument(message);
+  }
+
   public static void isTrue(boolean value) {
     isTrue(value, "Value must be true");
   }
