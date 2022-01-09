@@ -6,6 +6,14 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Assert {
+  public static void isTrue(boolean value) {
+    isTrue(value, "Value must be true");
+  }
+
+  public static void isTrue(boolean value, String message) {
+    if (!value) reportIllegalArgument(message);
+  }
+
   public static void notEmpty(Collection<?> collection) {
     notEmpty(collection, "Collection cannot be empty");
   }

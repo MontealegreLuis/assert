@@ -8,6 +8,29 @@ import org.junit.jupiter.api.Test;
 
 final class AssertTest {
   @Test
+  void is_true_assertion_allows_only_true_values() {
+    assertDoesNotThrow(() -> Assert.isTrue(true));
+  }
+
+  @Test
+  void is_true_assertion_prevents_false_values() {
+    var exception = assertThrows(IllegalArgumentException.class, () -> Assert.isTrue(false));
+
+    assertEquals("Value must be true", exception.getMessage());
+  }
+
+  @Test
+  void is_true_assertion_reports_custom_message_on_false_values() {
+    var customErrorMessage = "Value must be greater than 3";
+
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class, () -> Assert.isTrue(2 > 3, customErrorMessage));
+
+    assertEquals("Value must be greater than 3", exception.getMessage());
+  }
+
+  @Test
   void not_blank_assertion_allows_non_empty_value() {
     assertDoesNotThrow(() -> Assert.notBlank("Not blank value"));
     assertDoesNotThrow(() -> Assert.notBlank("Not blank value", "Custom message"));
