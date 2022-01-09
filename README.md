@@ -13,9 +13,9 @@ All assertions in the `Assert` class throw an `IllegalArgumentException` if they
 
 ## Installation
 
-1. [Authenticating to GitHub Packages](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#authenticating-to-github-packages)
-2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#maven)
-3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/docs/installation.md#gradle)
+1. [Authenticating to GitHub Packages](https://github.com/MontealegreLuis/assert/blob/main/docs/installation/authentication.md)
+2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/docs/installation/maven.md)
+3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/docs/installation/gradle.md)
 
 ## Examples
 
