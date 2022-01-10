@@ -15,7 +15,7 @@ public final class Assert {
   }
 
   public static void isTrue(boolean value) {
-    isTrue(value, "Value must be true");
+    isTrue(value, "Value cannot be false");
   }
 
   public static void isTrue(boolean value, String message) {

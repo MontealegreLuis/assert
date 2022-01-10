@@ -40,7 +40,7 @@ final class AssertTest {
   void is_true_assertion_prevents_false_values() {
     var exception = assertThrows(IllegalArgumentException.class, () -> Assert.isTrue(false));
 
-    assertEquals("Value must be true", exception.getMessage());
+    assertEquals("Value cannot be false", exception.getMessage());
   }
 
   @Test
