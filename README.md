@@ -30,6 +30,18 @@ public final class Username {
 }
 ```
 
+
+### Assertions
+
+The `Assert` class provides the following assertions
+
+| Method     | Description                                | Message                                      |
+|------------|--------------------------------------------|----------------------------------------------|
+| `notNull`  | Check that a value is not `null`           | `Value cannot be null`                       |
+| `isTrue`   | Check that a value is `true`               | `Value cannot be false`                      |
+| `notEmpty` | Check that a collection is not empty       | `Collection cannot be empty`                 |
+| `notBlank` | Check that a String is not blank or `null` | `Value cannot be blank or null. '%s' given.` |
+
 ### Custom exception messages
 
 You can pass a custom exception message, as shown in the snippet below.
@@ -44,8 +56,6 @@ public final class Username {
   }
 }
 ```
-
-The default error message would be `Value cannot be blank or null. '%s' given.`
 
 ## Contribute
 
