@@ -59,7 +59,7 @@ public final class Username {
 
 ## Contribute
 
-Please refer to [CONTRIBUTING](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to phUML.
+Please refer to [CONTRIBUTING](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to Assert.
 
 ## License
 

@@ -18,12 +18,12 @@ maven {
     url = uri("https://maven.pkg.github.com/montealegreluis/assert")
     credentials {
         username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-        password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
     }
 }
 ```
 
-Lastly, add the following entry to your `dependencies` in your `gradle.build` file.
+Lastly, add the following entry to your `dependencies` in your `build.gradle` file.
 
 ```groovy
 implementation 'com.montealegreluis:assert:1.0.0'

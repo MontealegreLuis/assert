@@ -63,7 +63,7 @@ Retrieve Assert dependencies using [Gradle](https://docs.gradle.org/current/user
 You can run the tests, check for coding style issues and run the [mutation test suite](https://pitest.org/) as follows:
 
 ```bash
-make test
+make check
 ```
 
 `make` will run the same Gradle tasks ran by GitHub Actions.
