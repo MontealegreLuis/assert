@@ -33,6 +33,8 @@ publishing {
 }
 
 dependencies {
+    implementation "io.vavr:vavr:0.10.4"
+
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 

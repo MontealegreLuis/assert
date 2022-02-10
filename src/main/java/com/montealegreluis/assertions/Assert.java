@@ -1,6 +1,8 @@
 package com.montealegreluis.assertions;
 
+import io.vavr.control.Try;
 import java.util.Collection;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -38,6 +40,14 @@ public final class Assert {
     if (value == null || value.trim().isEmpty()) {
       reportIllegalArgument(String.format(message, value));
     }
+  }
+
+  public static void uuid(String value) {
+    uuid(value, String.format("'%s' is not a valid UUID", value));
+  }
+
+  public static void uuid(String value, String message) {
+    Try.run(() -> UUID.fromString(value)).onFailure((e) -> reportIllegalArgument(message));
   }
 
   private static void reportIllegalArgument(String message) {

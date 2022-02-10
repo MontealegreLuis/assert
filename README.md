@@ -1,6 +1,6 @@
 # Assert
 
-[![codebeat badge](https://codebeat.co/badges/034ebd51-86c8-479a-9e52-59c95019aeb5)](https://codebeat.co/projects/github-com-montealegreluis-assert-main)
+[![CodeBeat badge](https://codebeat.co/badges/034ebd51-86c8-479a-9e52-59c95019aeb5)](https://codebeat.co/projects/github-com-montealegreluis-assert-main)
 [![CI workflow](https://github.com/montealegreluis/assert/actions/workflows/ci.yml/badge.svg)](https://github.com/montealegreluis/assert/actions/workflows/ci.yml)
 [![Release workflow](https://github.com/montealegreluis/assert/actions/workflows/release.yml/badge.svg)](https://github.com/montealegreluis/assert/actions/workflows/release.yml)
 [![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
@@ -41,6 +41,7 @@ The `Assert` class provides the following assertions
 | `isTrue`   | Check that a value is `true`               | `Value cannot be false`                      |
 | `notEmpty` | Check that a collection is not empty       | `Collection cannot be empty`                 |
 | `notBlank` | Check that a String is not blank or `null` | `Value cannot be blank or null. '%s' given.` |
+| `uuid`     | Check that a String is a valid UUID        | `'%s' is not a valid UUID`                   |
 
 ### Custom exception messages
 

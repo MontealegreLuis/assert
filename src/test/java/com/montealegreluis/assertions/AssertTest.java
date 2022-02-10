@@ -117,4 +117,25 @@ final class AssertTest {
 
     assertEquals(customErrorMessage, exception.getMessage());
   }
+
+  @Test
+  void uuid_assertion_prevents_invalid_UUIDs() {
+    assertThrows(IllegalArgumentException.class, () -> Assert.uuid(" "));
+    assertThrows(IllegalArgumentException.class, () -> Assert.uuid(null));
+    assertThrows(IllegalArgumentException.class, () -> Assert.uuid("not an UUID"));
+  }
+
+  @Test
+  void uuid_assertion_accepts_valid_UUIDs() {
+    assertDoesNotThrow(() -> Assert.uuid("2ce88a3b-d393-4013-8ebc-7f8c9e0a6b01"));
+  }
+
+  @Test
+  void uuid_assertion_reports_custom_message_on_invalid_UUIDs() {
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class, () -> Assert.uuid(null, "value must be a valid UUID"));
+
+    assertEquals("value must be a valid UUID", exception.getMessage());
+  }
 }
