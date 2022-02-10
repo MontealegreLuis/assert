@@ -50,6 +50,18 @@ public final class Assert {
     Try.run(() -> UUID.fromString(value)).onFailure((e) -> reportIllegalArgument(message));
   }
 
+  public static void min(long value, long minimumValue) {
+    min(
+        value,
+        minimumValue,
+        String.format(
+            "Value must be greater than or equal to %2$s. %s given", value, minimumValue));
+  }
+
+  public static void min(long value, long minimumValue, String message) {
+    if (value < minimumValue) reportIllegalArgument(message);
+  }
+
   private static void reportIllegalArgument(String message) {
     throw new IllegalArgumentException(message);
   }
