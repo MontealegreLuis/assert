@@ -59,6 +59,11 @@ public final class Username {
 }
 ```
 
+This package provides consistent placeholder ordering for all assertions:
+
+- `%s` for the tested value, e.g. `"value"`.
+- `%2$s`, `%3$s`, ... for all additional assertion-specific values, e.g. the minimum/maximum value, etc.
+
 ## Contribute
 
 Please refer to [CONTRIBUTING](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to Assert.

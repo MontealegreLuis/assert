@@ -134,9 +134,9 @@ final class AssertTest {
   void uuid_assertion_reports_custom_message_on_invalid_UUIDs() {
     var exception =
         assertThrows(
-            IllegalArgumentException.class, () -> Assert.uuid(null, "value must be a valid UUID"));
+            IllegalArgumentException.class, () -> Assert.uuid(null, "'%s' must be a valid UUID"));
 
-    assertEquals("value must be a valid UUID", exception.getMessage());
+    assertEquals("'null' must be a valid UUID", exception.getMessage());
   }
 
   @Test
@@ -154,7 +154,8 @@ final class AssertTest {
   void min_assertion__reports_custom_message_on_values_less_minimum_value() {
     var exception =
         assertThrows(
-            IllegalArgumentException.class, () -> Assert.min(0, 1, "Value is not greater than 1"));
+            IllegalArgumentException.class,
+            () -> Assert.min(0, 1, "Value is not greater than %2$s"));
 
     assertEquals("Value is not greater than 1", exception.getMessage());
   }

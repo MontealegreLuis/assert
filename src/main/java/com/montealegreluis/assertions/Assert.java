@@ -33,36 +33,32 @@ public final class Assert {
   }
 
   public static void notBlank(String value) {
-    notBlank(value, String.format("Value cannot be blank or null. '%s' given.", value));
+    notBlank(value, "Value cannot be blank or null. '%s' given.");
   }
 
   public static void notBlank(String value, String message) {
     if (value == null || value.trim().isEmpty()) {
-      reportIllegalArgument(String.format(message, value));
+      reportIllegalArgument(message, value);
     }
   }
 
   public static void uuid(String value) {
-    uuid(value, String.format("'%s' is not a valid UUID", value));
+    uuid(value, "'%s' is not a valid UUID");
   }
 
   public static void uuid(String value, String message) {
-    Try.run(() -> UUID.fromString(value)).onFailure((e) -> reportIllegalArgument(message));
+    Try.run(() -> UUID.fromString(value)).onFailure((e) -> reportIllegalArgument(message, value));
   }
 
   public static void min(long value, long minimumValue) {
-    min(
-        value,
-        minimumValue,
-        String.format(
-            "Value must be greater than or equal to %2$s. %s given", value, minimumValue));
+    min(value, minimumValue, "Value must be greater than or equal to %2$s. %s given");
   }
 
   public static void min(long value, long minimumValue, String message) {
-    if (value < minimumValue) reportIllegalArgument(message);
+    if (value < minimumValue) reportIllegalArgument(message, value, minimumValue);
   }
 
-  private static void reportIllegalArgument(String message) {
-    throw new IllegalArgumentException(message);
+  private static void reportIllegalArgument(String message, Object... arguments) {
+    throw new IllegalArgumentException(String.format(message, arguments));
   }
 }
