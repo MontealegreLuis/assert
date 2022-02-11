@@ -43,6 +43,7 @@ The `Assert` class provides the following assertions
 | `notBlank` | Check that a String is not blank or `null`          | `Value cannot be blank or null. '%s' given.`            |
 | `uuid`     | Check that a String is a valid UUID                 | `'%s' is not a valid UUID`                              |
 | `min`      | Check that a number is greater than a minimum value | `Value must be greater than or equal to %2$s. %s given` |
+| `pattern`  | Check that a String matches a given pattern         | `'%s' doesn't match pattern '%2$s'`                     |
 
 ### Custom exception messages
 

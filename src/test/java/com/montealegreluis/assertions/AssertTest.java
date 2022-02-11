@@ -159,4 +159,28 @@ final class AssertTest {
 
     assertEquals("Value is not greater than 1", exception.getMessage());
   }
+
+  @Test
+  void pattern_assertion_prevents_values_that_do_not_match_given_pattern() {
+    assertThrows(IllegalArgumentException.class, () -> Assert.pattern("abc", "(\\d+)"));
+    assertThrows(IllegalArgumentException.class, () -> Assert.pattern("  ", "(\\d+)"));
+  }
+
+  @Test
+  void pattern_assertion_accepts_values_that_match_a_given_pattern() {
+    assertDoesNotThrow(() -> Assert.pattern("123", "(\\d+)"));
+    assertDoesNotThrow(() -> Assert.pattern("1", "(\\d+)"));
+  }
+
+  @Test
+  void pattern_assertion__reports_custom_message_on_values_that_do_not_match_a_given_pattern() {
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () ->
+                Assert.pattern(
+                    "123c", "^(\\d+)$", "Value does not match pattern '%2$s'. '%s' given"));
+
+    assertEquals("Value does not match pattern '^(\\d+)$'. '123c' given", exception.getMessage());
+  }
 }

@@ -3,6 +3,7 @@ package com.montealegreluis.assertions;
 import io.vavr.control.Try;
 import java.util.Collection;
 import java.util.UUID;
+import java.util.regex.Pattern;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -56,6 +57,15 @@ public final class Assert {
 
   public static void min(long value, long minimumValue, String message) {
     if (value < minimumValue) reportIllegalArgument(message, value, minimumValue);
+  }
+
+  public static void pattern(String value, String pattern) {
+    pattern(value, pattern, "'%s' doesn't match pattern '%2$s'");
+  }
+
+  public static void pattern(String value, String pattern, String message) {
+    var matcher = Pattern.compile(pattern).matcher(value);
+    if (!matcher.find()) reportIllegalArgument(message, value, pattern);
   }
 
   private static void reportIllegalArgument(String message, Object... arguments) {
