@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 final class AssertTest {
@@ -182,5 +183,64 @@ final class AssertTest {
                     "123c", "^(\\d+)$", "Value does not match pattern '%2$s'. '%s' given"));
 
     assertEquals("Value does not match pattern '^(\\d+)$'. '123c' given", exception.getMessage());
+  }
+
+  @Test
+  void not_in_assertion_prevents_values_that_are_in_a_given_collection() {
+    var names = List.of(new FullName("Jane", "Doe"), new FullName("John", "Doe"));
+    var numbers = List.of(30, 20, 10, 0);
+
+    assertThrows(
+        IllegalArgumentException.class, () -> Assert.notIn(new FullName("Jane", "Doe"), names));
+    assertThrows(IllegalArgumentException.class, () -> Assert.notIn(10, numbers));
+  }
+
+  @Test
+  void not_in_assertion_accepts_values_that_are_not_in_a_given_collection() {
+    var names = List.of(new FullName("Jane", "Doe"), new FullName("John", "Doe"));
+    var numbers = List.of(30, 20, 10, 0);
+
+    assertDoesNotThrow(() -> Assert.notIn(new FullName("John", "Smith"), names));
+    assertDoesNotThrow(() -> Assert.notIn(40, numbers));
+  }
+
+  @Test
+  void not_in_assertion__reports_custom_message_on_values_are_in_a_given_collection() {
+    var name = new FullName("Jane", "Doe");
+    var names = List.of(name, new FullName("John", "Doe"));
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> Assert.notIn(name, names, "%s is already in group: %2$s"));
+
+    assertEquals("Jane Doe is already in group: Jane Doe, John Doe", exception.getMessage());
+  }
+
+  private static class FullName {
+    private final String firstName;
+    private final String lastName;
+
+    public FullName(String firstName, String lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("%s %s", firstName, lastName);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      FullName fullName = (FullName) o;
+      return firstName.equals(fullName.firstName) && lastName.equals(fullName.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(firstName, lastName);
+    }
   }
 }

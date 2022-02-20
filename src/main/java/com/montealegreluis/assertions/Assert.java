@@ -4,6 +4,7 @@ import io.vavr.control.Try;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -31,6 +32,17 @@ public final class Assert {
 
   public static void notEmpty(Collection<?> collection, String message) {
     if (collection.isEmpty()) reportIllegalArgument(message);
+  }
+
+  public static void notIn(Object value, Collection<?> collection) {
+    if (collection.contains(value))
+      reportIllegalArgument(
+          "Value '%s' was not expected to be one of the values in: %2$s",
+          value, format(collection));
+  }
+
+  public static void notIn(Object value, Collection<?> collection, String message) {
+    if (collection.contains(value)) reportIllegalArgument(message, value, format(collection));
   }
 
   public static void notBlank(String value) {
@@ -66,6 +78,10 @@ public final class Assert {
   public static void pattern(String value, String pattern, String message) {
     var matcher = Pattern.compile(pattern).matcher(value);
     if (!matcher.find()) reportIllegalArgument(message, value, pattern);
+  }
+
+  private static String format(Collection<?> collection) {
+    return collection.stream().map(Object::toString).collect(Collectors.joining(", "));
   }
 
   private static void reportIllegalArgument(String message, Object... arguments) {
