@@ -35,16 +35,17 @@ public final class Username {
 
 The `Assert` class provides the following assertions
 
-| Method     | Description                                         | Message                                                        |
-|------------|-----------------------------------------------------|----------------------------------------------------------------|
-| `notNull`  | Check that a value is not `null`                    | `Value cannot be null`                                         |
-| `isTrue`   | Check that a value is `true`                        | `Value cannot be false`                                        |
-| `notEmpty` | Check that a collection is not empty                | `Collection cannot be empty`                                   |
-| `notBlank` | Check that a String is not blank or `null`          | `Value cannot be blank or null. '%s' given.`                   |
-| `uuid`     | Check that a String is a valid UUID                 | `'%s' is not a valid UUID`                                     |
-| `min`      | Check that a number is greater than a minimum value | `Value must be greater than or equal to %2$s. %s given`        |
-| `pattern`  | Check that a String matches a given pattern         | `'%s' doesn't match pattern '%2$s'`                            |
-| `notIn`    | Check that a a value is not in a given collection   | `Value '%s' was not expected to be one of the values in: %2$s` |
+| Method     | Description                                                                                             | Message                                                        |
+|------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| `notNull`  | Check that a value is not `null`                                                                        | `Value cannot be null`                                         |
+| `isTrue`   | Check that a value is `true`                                                                            | `Value cannot be false`                                        |
+| `notEmpty` | Check that a collection is not empty                                                                    | `Collection cannot be empty`                                   |
+| `notBlank` | Check that a String is not blank or `null`                                                              | `Value cannot be blank or null. '%s' given.`                   |
+| `uuid`     | Check that a String is a valid UUID                                                                     | `'%s' is not a valid UUID`                                     |
+| `min`      | Check that a number is greater than a minimum value                                                     | `Value must be greater than or equal to %2$s. %s given`        |
+| `pattern`  | Check that a String matches a given pattern                                                             | `'%s' doesn't match pattern '%2$s'`                            |
+| `email`    | Check that a String is a valid email according to [RFC (5322)](https://www.rfc-editor.org/info/rfc5322) | `'%s' is not a valid email address`                            |
+| `notIn`    | Check that a a value is not in a given collection                                                       | `Value '%s' was not expected to be one of the values in: %2$s` |
 
 ### Custom exception messages
 

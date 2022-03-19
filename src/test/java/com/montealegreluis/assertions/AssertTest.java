@@ -174,7 +174,7 @@ final class AssertTest {
   }
 
   @Test
-  void pattern_assertion__reports_custom_message_on_values_that_do_not_match_a_given_pattern() {
+  void pattern_assertion_reports_custom_message_on_values_that_do_not_match_a_given_pattern() {
     var exception =
         assertThrows(
             IllegalArgumentException.class,
@@ -205,7 +205,7 @@ final class AssertTest {
   }
 
   @Test
-  void not_in_assertion__reports_custom_message_on_values_are_in_a_given_collection() {
+  void not_in_assertion_reports_custom_message_on_values_are_in_a_given_collection() {
     var name = new FullName("Jane", "Doe");
     var names = List.of(name, new FullName("John", "Doe"));
     var exception =
@@ -214,6 +214,27 @@ final class AssertTest {
             () -> Assert.notIn(name, names, "%s is already in group: %2$s"));
 
     assertEquals("Jane Doe is already in group: Jane Doe, John Doe", exception.getMessage());
+  }
+
+  @Test
+  void email_assertion_prevents_values_with_invalid_email_address() {
+    assertThrows(IllegalArgumentException.class, () -> Assert.email("not an email"));
+  }
+
+  @Test
+  void email_assertion_accepts_values_with_valid_email_address() {
+    assertDoesNotThrow(() -> Assert.email("example@example.com"));
+    assertDoesNotThrow(() -> Assert.email("jane.dow@example.com.mx"));
+  }
+
+  @Test
+  void email_assertion_reports_custom_message_on_values_with_invalid_email_address() {
+    var exception =
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> Assert.email("not an email", "Invalid email provided '%s'"));
+
+    assertEquals("Invalid email provided 'not an email'", exception.getMessage());
   }
 
   private static class FullName {

@@ -72,6 +72,24 @@ public final class Assert {
     if (value.compareTo(minimumValue) < 0) reportIllegalArgument(message, value, minimumValue);
   }
 
+  /**
+   * Validates value is a valid email address using regular expression from RFC 5322
+   *
+   * @see <a href="https://www.rfc-editor.org/info/rfc5322">RFC 5322</a>
+   */
+  public static void email(String value) {
+    email(value, "'%s' is not a valid email address");
+  }
+
+  /**
+   * Validates value is a valid email address using regular expression from RFC 5322
+   *
+   * @see <a href="https://www.rfc-editor.org/info/rfc5322">RFC 5322</a>
+   */
+  public static void email(String value, String message) {
+    pattern(value, "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message);
+  }
+
   public static void pattern(String value, String pattern) {
     pattern(value, pattern, "'%s' doesn't match pattern '%2$s'");
   }
