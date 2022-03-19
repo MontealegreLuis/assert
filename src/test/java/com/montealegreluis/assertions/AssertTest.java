@@ -142,13 +142,13 @@ final class AssertTest {
 
   @Test
   void min_assertion_prevents_values_less_than_minimum_value() {
-    assertThrows(IllegalArgumentException.class, () -> Assert.min(0, 1));
+    assertThrows(IllegalArgumentException.class, () -> Assert.min(0.2, 1.0));
   }
 
   @Test
   void min_assertion_accepts_values_less_than_or_equal_to_minimum_value() {
-    assertDoesNotThrow(() -> Assert.min(1, 1));
-    assertDoesNotThrow(() -> Assert.min(2, 1));
+    assertDoesNotThrow(() -> Assert.min(1L, 1L));
+    assertDoesNotThrow(() -> Assert.min(2L, 1L));
   }
 
   @Test
@@ -156,9 +156,9 @@ final class AssertTest {
     var exception =
         assertThrows(
             IllegalArgumentException.class,
-            () -> Assert.min(0, 1, "Value is not greater than %2$s"));
+            () -> Assert.min(0.5f, 1f, "Value is not greater than %2$s"));
 
-    assertEquals("Value is not greater than 1", exception.getMessage());
+    assertEquals("Value is not greater than 1.0", exception.getMessage());
   }
 
   @Test

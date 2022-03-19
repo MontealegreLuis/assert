@@ -63,12 +63,13 @@ public final class Assert {
     Try.run(() -> UUID.fromString(value)).onFailure((e) -> reportIllegalArgument(message, value));
   }
 
-  public static void min(long value, long minimumValue) {
+  public static <U extends Number, T extends Comparable<U>> void min(T value, U minimumValue) {
     min(value, minimumValue, "Value must be greater than or equal to %2$s. %s given");
   }
 
-  public static void min(long value, long minimumValue, String message) {
-    if (value < minimumValue) reportIllegalArgument(message, value, minimumValue);
+  public static <U extends Number, T extends Comparable<U>> void min(
+      T value, U minimumValue, String message) {
+    if (value.compareTo(minimumValue) < 0) reportIllegalArgument(message, value, minimumValue);
   }
 
   public static void pattern(String value, String pattern) {
