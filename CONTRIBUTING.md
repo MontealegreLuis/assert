@@ -43,22 +43,7 @@ make format
 
 [Make](https://en.wikipedia.org/wiki/Make_(software)) will run the [Google Java Format Gradle plugin](https://github.com/sherter/google-java-format-gradle-plugin) in your `src` directory.
 
-## Using Assert from a Git checkout
-
-The following commands can be used to perform the initial checkout of Assert:
-
-```bash
-git clone git://github.com/MontealegreLuis/assert.git
-cd assert
-```
-
-Retrieve Assert dependencies using [Gradle](https://docs.gradle.org/current/userguide/userguide.html):
-
-```bash
-./gradlew assemble
-```
-
-## Running Assert Code Quality Checks
+## Running Code Quality Checks
 
 You can run the tests, check for coding style issues and run the [mutation test suite](https://pitest.org/) as follows:
 

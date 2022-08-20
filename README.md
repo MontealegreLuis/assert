@@ -5,11 +5,20 @@
 [![Release workflow](https://github.com/montealegreluis/assert/actions/workflows/release.yml/badge.svg)](https://github.com/montealegreluis/assert/actions/workflows/release.yml)
 [![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
-Assert is a Maven package with assertions (guard clauses) for input validation. Assert can be used to implement pre-/post-conditions on input data.
+Assert provides **guard clauses** to add pre-conditions and post-conditions to your code.
 
-When assertions fail, an exception is thrown, removing the necessity for if-clauses in your code.
+A guard clause is a technique based on the [fail-fast](https://en.wikipedia.org/wiki/Fail-fast) method.
 
-All assertions in the `Assert` class throw an `IllegalArgumentException` if they fail.
+A guard clause purpose is to validate a condition and immediately stop the code execution if the condition is not met by **throwing an exception** (`IllegalArgumentException`).
+Guard clauses remove the necessity for if-clauses in your code.
+
+Below is the most important rule about guard clauses.
+
+> Guard clauses exceptions should **never** be caught.
+
+You should let the caller hit those exceptions because most of the time, guard clauses will **prevent scenarios that should never happen**.
+
+We want the application to fail immediately so that we can discover the bug **before deploying it to production**, during the development process.
 
 ## Installation
 
@@ -17,7 +26,7 @@ All assertions in the `Assert` class throw an `IllegalArgumentException` if they
 2. [Maven](https://github.com/MontealegreLuis/assert/blob/main/docs/installation/maven.md)
 3. [Gradle](https://github.com/MontealegreLuis/assert/blob/main/docs/installation/gradle.md)
 
-## Examples
+## Usage
 
 ```java
 public final class Username {
@@ -30,8 +39,7 @@ public final class Username {
 }
 ```
 
-
-### Assertions
+## Assertions
 
 The `Assert` class provides the following assertions
 
@@ -69,7 +77,7 @@ This package provides consistent placeholder ordering for all assertions:
 
 ## Contribute
 
-Please refer to [CONTRIBUTING](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to Assert.
+Please refer to our [contribution guidelines](https://github.com/MontealegreLuis/assert/blob/main/CONTRIBUTING.md) for information on how to contribute to this project.
 
 ## License
 
